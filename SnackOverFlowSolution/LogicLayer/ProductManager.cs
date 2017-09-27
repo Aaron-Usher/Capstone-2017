@@ -119,19 +119,33 @@ namespace LogicLayer
         /// </summary>
         /// <param name="productID"></param>
         /// <returns>product</returns>
-        public DataObjects.Product RetrieveProductById(int productId)
+        public Product RetrieveProductById(int productId)
         {
-            Product products = null;
+            Product product = null;
 
             try
             {
-                products = ProductAccessor.RetrieveProduct(productId);
+                product = ProductAccessor.RetrieveProduct(productId);
             }
             catch (Exception ex)
             {
                 throw new ApplicationException("There was a problem retrieving the product details.", ex);
             }
-            return products;
+            return product;
+        }
+
+        public Product RetrieveProductByName(string name)
+        {
+            Product product = null;
+            try
+            {
+                ProductAccessor.RetrieveProductByName();
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("There were a problem retrieving the product details", ex);
+            }
+            return product;
         }
 
         /// <summary>
@@ -186,9 +200,13 @@ namespace LogicLayer
         /// <returns></returns>
         private List<BrowseProductViewModel> FilterByVendor(List<BrowseProductViewModel> productsToFilter, List<String> vendors)
         {
+            List<BrowseProductViewModel> filteredProducts = null;
             if (vendors.Any())
-                return productsToFilter.Where(unfiltered => vendors.Any(vendor => vendor.Equals(unfiltered.Supplier_Name))).ToList();
-            return productsToFilter;
+            {
+                filteredProducts = productsToFilter.Where(unfiltered => vendors.Any(vendor => vendor.Equals(unfiltered.Supplier_Name))).ToList();
+            }
+                
+            return filteredProducts;
         }
 
         /// <summary>

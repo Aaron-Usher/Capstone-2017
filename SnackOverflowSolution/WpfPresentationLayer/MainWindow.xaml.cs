@@ -1846,7 +1846,9 @@ namespace WpfPresentationLayer
         /// <param name="e"></param>
         private void productSelected(object sender, EventArgs e)
         {
+            _selectedProduct = _productManager.RetrieveProductByName(cboProducts.SelectedItem.ToString());
             _selectedProduct = _productManager.RetrieveProducts().Find(p => p.Name == cboProducts.SelectedItem.ToString());
+            
         }
 
         /// <summary>

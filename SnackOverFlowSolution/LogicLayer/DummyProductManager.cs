@@ -15,6 +15,10 @@ namespace LogicLayer
             return new List<Product>(new Product[] { new Product { ProductId = 10000 } });
         }
 
+        public Product RetrieveProductByName(string name)
+        {
+            throw new NotImplementedException();
+        }
 
         public int DeleteProduct(int productID)
         {

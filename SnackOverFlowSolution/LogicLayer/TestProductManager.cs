@@ -30,6 +30,11 @@ namespace LogicLayer
             };
         }
 
+        public Product RetrieveProductByName(string name)
+        {
+            throw new NotImplementedException();
+        }
+
         public int DeleteProduct(int productID)
         {
             throw new NotImplementedException();
